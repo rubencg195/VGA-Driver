@@ -1,5 +1,5 @@
-TARGET=
-C_SOURCES=
+TARGET= screen
+C_SOURCES= screen.c main.c
 ASM_SOURCES=start.s
 ASM_OUTPUT=$(TARGET:.elf=).s
 OBJ_FILES=start.o $(C_SOURCES:.c=.o)
@@ -33,7 +33,7 @@ start.o: start.s
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -mips1 -o $@ $<
-	
+
 $(ASM_OUTPUT): $(TARGET)
 	$(OBJDUMP) -D $< > $@
 
